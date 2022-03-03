@@ -1,0 +1,18 @@
+{
+    "name": "Fast Conversor",
+    "description": "This is a flash away to get current money conversion ",
+    "version": "1.0",
+    "manifest_version": 3,
+
+    "action": {
+        "default_popup": "src/popup.html"
+    },
+
+    "host_permissions": [
+        "https://free.currconv.com/api/v7/"
+    ],
+
+    "permissions": [
+        "storage"
+    ]
+}
