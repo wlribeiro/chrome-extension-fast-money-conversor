@@ -43,3 +43,7 @@ body{
     color: rgb(99, 4, 4);
     font-weight: 400;
 }
+
+.dialog-item {
+    display: none;
+}

@@ -6,7 +6,12 @@ btn.onclick = async function(){
     let firstCoinValue = parseFloat(document.getElementById("section-1").value);
 
     let secondCoinValue = 0;
-    
+
+    // switchBtn()
+    let convertBtn = document.getElementById("convert-btn");
+    showDialog(true, "converting") // em alguns casos, principalente com a internet lenta, a conversão pode demorar
+    convertBtn.disabled = true;
+
     if(firstCoinValue){
         if(firstCoin == secondCoin){
             document.getElementById("section-2").value = parseFloat(firstCoinValue);
@@ -27,8 +32,21 @@ btn.onclick = async function(){
                         document.getElementById("section-2").value = secondCoinValue;
                     })
                 .catch(() =>{
-                    document.getElementsByClassName("dialog")[0].style.display = "flex";
+                    showDialog(true, "conection-problem")
                 }) ;
         }
     }
+
+    convertBtn.disabled = false;
+    showDialog(false, "converting")
+
+}
+
+function showDialog(activate, id){
+    if(activate){
+        document.getElementById(id).style.display = "flex";
+    } else{
+        document.getElementById(id).style.display = "none"
+    }
+    
 }
