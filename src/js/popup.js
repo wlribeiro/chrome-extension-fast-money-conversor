@@ -1,6 +1,6 @@
 var btn = document.querySelector('button');
 
-btn.onclick = function(){
+btn.onclick = async function(){
     let firstCoin = document.getElementById("select-1").value;
     let secondCoin = document.getElementById("select-2").value;
     let firstCoinValue = parseFloat(document.getElementById("section-1").value);
@@ -16,7 +16,7 @@ btn.onclick = function(){
             let key = `${firstCoin}${secondCoin}`;
             let url = `https://economia.awesomeapi.com.br/json/last/${search}`
 
-            fetch(url)
+            await fetch(url)
                 .then(res => { 
                     return res.json(); 
                 })
@@ -25,7 +25,10 @@ btn.onclick = function(){
                         let value = json[key]["ask"]; 
                         secondCoinValue = (parseFloat(value) * firstCoinValue).toFixed(2);
                         document.getElementById("section-2").value = secondCoinValue;
-                    });
+                    })
+                .catch(() =>{
+                    document.getElementsByClassName("dialog")[0].style.display = "flex";
+                }) ;
         }
     }
 }
