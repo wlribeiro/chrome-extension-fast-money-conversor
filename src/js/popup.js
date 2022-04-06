@@ -18,9 +18,9 @@ btn.onclick = async function(){
 
         } else {
             let search = `${firstCoin}-${secondCoin}`
-            let key = `${firstCoin}${secondCoin}`;
+            let key = `${firstCoin}`;
             let url = `https://economia.awesomeapi.com.br/json/last/${search}`
-
+            console.log(url)
             await fetch(url)
                 .then(res => { 
                     return res.json(); 
